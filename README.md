@@ -25,8 +25,8 @@ huge_site_plugin:
 ```
 
 - `enable` `<String>`
-- `concurrency` `<Number>` Maximum number of files to be generated in parallel. Default is 10. [`hexo generate` options](https://hexo.io/docs/commands#generate)
-- `database_format` `<String>`
+- `concurrency` `<Number>` Maximum number of files to be generated in parallel. Default value is `10`. [`hexo generate` options](https://hexo.io/docs/commands#generate)
+- `database_format` `<String>` Default value is `v8se`.
   - `json` Save the database to file using JSON stringify. Default implementation.
   - `v8se` Save the database to file using v8 serialization.
 
