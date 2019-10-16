@@ -1,6 +1,6 @@
 {
   "name": "hexo-huge-site-plugin",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "This plugin helps hexo to generate a huge site.",
   "main": "index.js",
   "scripts": {
