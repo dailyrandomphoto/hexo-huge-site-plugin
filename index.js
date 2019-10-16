@@ -1,17 +1,19 @@
 'use strict';
 
-const chalk = require('chalk'); // eslint-disable-line node/no-extraneous-require
+const fs = require('fs');
+const chalk = require('chalk'); // eslint-disable-line node/no-missing-require,node/no-extraneous-require
 const {
   save,
   load,
-  toJSON
+  toJSON,
+  convert
 } = require('./lib/database');
 
 const log = hexo.log;
 
 const config = Object.assign({
   enable: false,
-  database_format: 'json',
+  database_format: 'v8se',
   concurrency: 10
 }, hexo.config.huge_site_plugin);
 
@@ -23,8 +25,27 @@ function overrideDatabase() {
     return;
   }
   const database = hexo.database;
-  if (/\.json$/.test(database.options.path)) {
-    database.options.path = database.options.path.replace(/\.json$/, '.dat');
+  const orgPath = database.options.path;
+  if (/\.json$/.test(orgPath)) {
+    const newPath = database.options.path = orgPath.replace(/\.json$/, '.dat');
+    log.debug('Writing database to %s', chalk.magenta(newPath));
+
+    if (fs.existsSync(orgPath) && !fs.existsSync(newPath)) {
+      const hexoLoad = hexo.load;
+      const hexoWatch = hexo.watch;
+      const filter = () => Promise.resolve()
+        .then(() => { log.info('Converting %s to %s', chalk.magenta(orgPath), chalk.magenta(newPath)); })
+        .then(() => convert(orgPath, newPath))
+        .then(() => { log.debug('Converted %s to %s', chalk.magenta(orgPath), chalk.magenta(newPath)); })
+        .catch(err => { throw err; });
+
+      hexo.load = function() {
+        return filter().then(hexoLoad.bind(hexo));
+      };
+      hexo.watch = function() {
+        return filter().then(hexoWatch.bind(hexo));
+      };
+    }
   }
 
   // override database load, save method.
@@ -51,8 +72,8 @@ function concurrency() {
 }
 
 if (config.enable) {
-  log.info('=========== hexo-huge-site-plugin ===========');
-  log.info('config %s', chalk.magenta(JSON.stringify(config)));
+  log.debug('=========== %s ===========', chalk.cyan('hexo-huge-site-plugin'));
+  log.debug('config %s', chalk.magenta(JSON.stringify(config)));
   concurrency();
   overrideDatabase();
 }
