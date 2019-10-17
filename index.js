@@ -8,13 +8,16 @@ const {
   toJSON,
   convert
 } = require('./lib/database');
+const registerFilters = require('./lib/filter');
 
 const log = hexo.log;
 
 const config = Object.assign({
   enable: false,
   database_format: 'v8se',
-  concurrency: 10
+  concurrency: 10,
+  // after merge https://github.com/dailyrandomphoto/hexo/tree/limit-rendering-concurrency branch, remove this
+  overrideRenderPostFilter: false
 }, hexo.config.huge_site_plugin);
 
 /**
@@ -76,4 +79,7 @@ if (config.enable) {
   log.debug('config %s', chalk.magenta(JSON.stringify(config)));
   concurrency();
   overrideDatabase();
+  if (config.overrideRenderPostFilter) {
+    registerFilters(hexo);
+  }
 }

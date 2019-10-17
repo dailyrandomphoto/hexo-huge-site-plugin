@@ -22,13 +22,18 @@ huge_site_plugin:
   enable: true
   concurrency: 10
   database_format: 'v8se'
+  overrideRenderPostFilter: true
 ```
 
-- `enable` `<String>`
+- `enable` `<Boolean>` Enable hexo-huge_site_plugin. Default value is `false`.
 - `concurrency` `<Number>` Maximum number of files to be generated in parallel. Default value is `10`. [`hexo generate` options](https://hexo.io/docs/commands#generate)
+  - Set a small number or provide `-c` option on `generate` command if rendering HTML takes very long time or fails with OOM error.
 - `database_format` `<String>` Default value is `v8se`.
   - `json` Save the database to file using JSON stringify. Default implementation.
   - `v8se` Save the database to file using v8 serialization.
+  - Set as `v8se` if save database fails.
+- `overrideRenderPostFilter` `Boolean` Limit rendering concurrency to reduce memory usages. Default value is `false`.
+  - Enable it if rendering post takes very long time or fails with OOM error.
 
 ## License
 Copyright (c) 2019 dailyrandomphoto. Licensed under the [MIT license][license-url].
