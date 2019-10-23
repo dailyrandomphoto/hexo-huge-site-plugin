@@ -1,6 +1,6 @@
 {
   "name": "hexo-huge-site-plugin",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "This plugin helps hexo to generate a huge site.",
   "main": "index.js",
   "scripts": {
@@ -9,13 +9,13 @@
     "test-cov": "nyc npm run test"
   },
   "dependencies": {
-    "node-serialization": "0.0.1"
+    "node-serialization": "0.0.2"
   },
   "devDependencies": {
     "chai": "^4.2.0",
     "eslint": "^6.5.1",
     "eslint-config-hexo": "^3.0.0",
-    "mocha": "^6.2.1",
+    "mocha": "^6.2.2",
     "nyc": "^14.1.1"
   },
   "keywords": [
