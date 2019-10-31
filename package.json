@@ -2,7 +2,7 @@
   "name": "hexo-huge-site-plugin",
   "version": "1.0.0",
   "description": "This plugin helps hexo to generate a huge site.",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
