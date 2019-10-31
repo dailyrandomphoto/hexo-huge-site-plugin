@@ -1,7 +1,6 @@
 # hexo-huge-site-plugin
 
 [![NPM Version][npm-version-image]][npm-url]
-[![NPM Downloads][npm-downloads-image]][npm-url]
 [![LICENSE][license-image]][license-url]
 [![Build Status][travis-image]][travis-url]
 [![Coverage Status][coveralls-image]][coveralls-url]
@@ -49,10 +48,10 @@ Copyright (c) 2019 dailyrandomphoto. Licensed under the [MIT license][license-ur
 [dependencies-url]: https://david-dm.org/dailyrandomphoto/hexo-huge-site-plugin
 [devDependencies-url]: https://david-dm.org/dailyrandomphoto/hexo-huge-site-plugin?type=dev
 
-[npm-downloads-image]: https://img.shields.io/npm/dm/hexo-huge-site-plugin.svg
-[npm-version-image]: https://img.shields.io/npm/v/hexo-huge-site-plugin.svg
-[license-image]: https://img.shields.io/npm/l/hexo-huge-site-plugin.svg
-[travis-image]: https://img.shields.io/travis/dailyrandomphoto/hexo-huge-site-plugin/master
-[coveralls-image]: https://coveralls.io/repos/github/dailyrandomphoto/hexo-huge-site-plugin/badge.svg?branch=master
-[dependencies-image]: https://david-dm.org/dailyrandomphoto/hexo-huge-site-plugin/status.svg
-[devDependencies-image]: https://david-dm.org/dailyrandomphoto/hexo-huge-site-plugin/dev-status.svg
+[npm-downloads-image]: https://img.shields.io/npm/dm/hexo-huge-site-plugin
+[npm-version-image]: https://img.shields.io/npm/v/hexo-huge-site-plugin
+[license-image]: https://img.shields.io/npm/l/hexo-huge-site-plugin
+[travis-image]: https://img.shields.io/travis/dailyrandomphoto/hexo-huge-site-plugin
+[coveralls-image]: https://img.shields.io/coveralls/github/dailyrandomphoto/hexo-huge-site-plugin
+[dependencies-image]: https://img.shields.io/david/dailyrandomphoto/hexo-huge-site-plugin
+[devDependencies-image]: https://img.shields.io/david/dev/dailyrandomphoto/hexo-huge-site-plugin
