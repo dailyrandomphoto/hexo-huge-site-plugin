@@ -9,7 +9,36 @@
 
 This plugin helps hexo to generate a huge site.
 
+## Test Environment
+
+- Platform: Travis CI
+- Node version: 8, 10, node
+- Node option: `--max_old_space_size=1024`
+
+
+hexo version | Use `hexo-huge-site-plugin` | Post count | Generated files count | result
+--- | --- | --- | --- | ---
+hexo: 3.9.0<br>warehouse: 2.2.0 |  | 1500 | 3059 | ❌
+hexo: hexojs/hexo(4.0.0)<br>warehouse: 3.0.1 |  | 1500 | 3059 | ❌
+hexo: hexojs/hexo(4.0.0)<br>warehouse: 3.0.1 | yes | 1500 | 3059 | ✅
+hexo: hexojs/hexo(4.0.0)<br>warehouse: 3.0.1 |  | 3000 | 6023 | ❌
+hexo: hexojs/hexo(4.0.0)<br>warehouse: 3.0.1 | yes | 3000 | 6023 | ✅
+hexo: hexojs/hexo(4.0.0)<br>warehouse: 3.0.1 |  | 4500 | 9059 | ❌
+hexo: hexojs/hexo(4.0.0)<br>warehouse: 3.0.1 | yes | 4500 | 9059 | ✅
+
+[Full test report](https://github.com/dailyrandomphoto/hexo-huge-site-test/issues/1)
+
+## How to work?
+
+- Force use `concurrency` option to reduce memory usages. ([`hexo generate` options](https://hexo.io/docs/commands#generate))
+- Serialize database using [v8 Serialization API](https://nodejs.org/api/v8.html#v8_serialization_api).
+- Limit rendering concurrency to reduce memory usages.
+
+[Other Tips to Improve Hexo Generation Performance.](https://github.com/dailyrandomphoto/hexo-huge-site-plugin/issues/1)
+
+
 ## Installation
+
 ```sh
 npm install --save hexo-huge-site-plugin
 ```
